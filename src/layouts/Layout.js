@@ -38,7 +38,7 @@ const Layout = () => {
         <Route path="/authentication/card" component={AuthCardRoutes} />
         <Route path="/authentication/split" component={AuthSplitRoutes} />
         <Route path="/authentication/wizard" component={WizardAuth} />
-        <Route component={MainLayout} />
+        <Route path="/" component={MainLayout} />
         <Redirect to="/errors/404" />
       </Switch>
 

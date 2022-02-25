@@ -43,7 +43,7 @@ const MainLayout = () => {
         <div className={classNames('content', { 'pb-0': isKanban })}>
           <NavbarTop />
           <Switch>
-            <Route path="/" exact component={Dashboard} />
+            <Route path="/dash" exact component={Dashboard} />
             <MainRoutes />
           </Switch>
           {!isKanban && <Footer />}
