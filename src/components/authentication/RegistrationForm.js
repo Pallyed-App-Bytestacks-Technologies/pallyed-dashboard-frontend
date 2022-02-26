@@ -43,6 +43,7 @@ const RegistrationForm = ({ hasLabel }) => {
       }
     } catch (err) {
       console.log(response);
+      toast.error(`Email ${formData.email} already exists`);
     }
     // if ('user' in response) {
     //   toast.success(
