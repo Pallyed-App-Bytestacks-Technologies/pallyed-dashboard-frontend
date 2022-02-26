@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import Divider from 'components/common/Divider';
@@ -14,10 +14,33 @@ const LoginForm = ({ hasLabel, layout }) => {
     remember: false
   });
 
+  let history = useHistory();
+
+  async function loginUser(credentials) {
+    return fetch(`https://www.treasurelandtechhomes.com/api/patron/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    }).then(data => data.json());
+  }
   // Handler
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    toast.success(`Logged in as ${formData.email}`);
+    let credentials = {
+      email: formData.email,
+      password: formData.password
+    };
+    const response = await loginUser(credentials);
+    if ('access_token' in response) {
+      toast.success(`Logged in as ${formData.email}`);
+      localStorage.setItem('access_token', response['access_token']);
+      localStorage.setItem('user', JSON.stringify(response['user']));
+      history.push('/dash');
+    } else {
+      toast.error('Login Error');
+    }
   };
 
   const handleFieldChange = e => {

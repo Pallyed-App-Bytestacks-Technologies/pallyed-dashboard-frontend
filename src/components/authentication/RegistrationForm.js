@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import Divider from 'components/common/Divider';
@@ -9,17 +9,51 @@ import SocialAuthButtons from './SocialAuthButtons';
 const RegistrationForm = ({ hasLabel }) => {
   // State
   const [formData, setFormData] = useState({
-    name: '',
+    fname: '',
+    lname: '',
     email: '',
     password: '',
     confirmPassword: '',
     isAccepted: false
   });
 
+  let history = useHistory();
+
+  async function registerUser(credentials) {
+    return fetch(`https://www.treasurelandtechhomes.com/api/patron/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    }).then(data => data.json());
+  }
+
   // Handler
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    toast.success(`Successfully registered as ${formData.name}`);
+    const response = await registerUser(formData);
+    try {
+      if ('user' in response) {
+        toast.success(
+          `Successfully registered as ${response['user'].fname} ${response['user'].lname}`
+        );
+        console.log(response);
+        history.push('/authentication/card/login');
+      }
+    } catch (err) {
+      console.log(response);
+    }
+    // if ('user' in response) {
+    //   toast.success(
+    //     `Successfully registered as ${formData.fname} ${formData.lname}`
+    //   );
+    //   history.push('/authentication/card/login');
+    // } else {
+    //   toast.error('Login Error');
+    // }
+    //console.log(formData);
+    //console.log(`${response['email']}`);
   };
 
   const handleFieldChange = e => {
@@ -32,11 +66,22 @@ const RegistrationForm = ({ hasLabel }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        {hasLabel && <Form.Label>Name</Form.Label>}
+        {hasLabel && <Form.Label>First name</Form.Label>}
         <Form.Control
-          placeholder={!hasLabel ? 'Name' : ''}
-          value={formData.name}
-          name="name"
+          placeholder={!hasLabel ? 'First name' : ''}
+          value={formData.fname}
+          name="fname"
+          onChange={handleFieldChange}
+          type="text"
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        {hasLabel && <Form.Label>Last name</Form.Label>}
+        <Form.Control
+          placeholder={!hasLabel ? 'Last Name' : ''}
+          value={formData.lname}
+          name="lname"
           onChange={handleFieldChange}
           type="text"
         />
@@ -101,7 +146,8 @@ const RegistrationForm = ({ hasLabel }) => {
           className="w-100"
           type="submit"
           disabled={
-            !formData.name ||
+            !formData.lname ||
+            !formData.fname ||
             !formData.email ||
             !formData.password ||
             !formData.confirmPassword ||
