@@ -39,7 +39,7 @@ const LoginForm = ({ hasLabel, layout }) => {
       localStorage.setItem('user', JSON.stringify(response['user']));
       history.push('/dash');
     } else {
-      toast.error('Login Error');
+      toast.error(`Login ${response.error}`);
     }
   };
 

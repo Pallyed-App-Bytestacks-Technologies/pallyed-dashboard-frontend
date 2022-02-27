@@ -12,6 +12,8 @@ import ProfileBanner from '../ProfileBanner';
 import VerifiedBadge from 'components/common/VerifiedBadge';
 
 const Banner = () => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  //console.log(user);
   const [rightSidedItems] = useState([
     /*  {
       title: 'Google',
@@ -33,7 +35,7 @@ const Banner = () => {
         <Row>
           <Col lg={8}>
             <h4 className="mb-1">
-              Benjamin Oguntoye <VerifiedBadge />
+              {user && user.fname} {user && user.lname} <VerifiedBadge />
             </h4>
             <h5 className="fs-0 fw-normal">
               Senior Software Engineer at Pallyed Limited
