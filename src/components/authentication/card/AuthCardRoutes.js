@@ -10,6 +10,7 @@ import LockScreen from 'components/authentication/card/LockScreen';
 
 const AuthCardRoutes = () => {
   const { url } = useRouteMatch();
+  console.log(url);
 
   return (
     <Switch>

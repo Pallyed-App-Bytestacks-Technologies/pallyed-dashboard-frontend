@@ -41,10 +41,10 @@ const AuthCardLayout = ({ leftSideContent, children, footer = true }) => {
                         className="link-light mb-4 font-sans-serif fw-bolder fs-4 d-inline-block"
                         to="/"
                       >
-                        falcon
+                        Pallyed
                       </Link>
                       <p className="opacity-75 text-white">
-                        With the power of Falcon, you can now focus only on
+                        With the power of Pallyed, you can now focus only on
                         functionaries for your digital products, while leaving
                         the UI design on us!
                       </p>
