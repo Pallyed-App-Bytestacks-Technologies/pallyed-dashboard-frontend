@@ -34,7 +34,7 @@ const SocialAuthButtons = () => {
       toast.success(`Logged in as ${response['user'].email}`);
       localStorage.setItem('access_token', response['access_token']);
       localStorage.setItem('user', JSON.stringify(response['user']));
-      history.push('/dash');
+      history.push('/');
     } else {
       toast.error('Login Error');
     }

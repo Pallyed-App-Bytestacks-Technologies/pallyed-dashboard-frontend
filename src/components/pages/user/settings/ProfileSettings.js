@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import FalconCardHeader from 'components/common/FalconCardHeader';
 
 const ProfileSettings = () => {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    let loggedInUser = JSON.parse(localStorage.getItem('user'));
+    if (!loggedInUser) {
+      history.push('/authentication/card/login');
+    } else {
+      setUser('loggedInUser');
+      alert(user);
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: 'First Name',
     lastName: 'Last Name',
