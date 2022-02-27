@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import WeeklySales from './WeeklySales';
 import { Row, Col } from 'react-bootstrap';
 import {
@@ -34,6 +35,14 @@ import events from 'data/events/events';
 import Calendar from 'components/app/calendar/Calendar';
 
 const Dashboard = () => {
+  let history = useHistory();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (!loggedInUser) {
+      history.push('/authentication/card/login');
+    }
+  }, []);
   return (
     <>
       <Row className="g-3 mb-3">

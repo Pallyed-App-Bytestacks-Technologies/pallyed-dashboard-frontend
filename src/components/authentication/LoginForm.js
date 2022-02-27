@@ -37,9 +37,9 @@ const LoginForm = ({ hasLabel, layout }) => {
       toast.success(`Logged in as ${formData.email}`);
       localStorage.setItem('access_token', response['access_token']);
       localStorage.setItem('user', JSON.stringify(response['user']));
-      history.push('/dash');
+      history.push('/');
     } else {
-      toast.error('Login Error');
+      toast.error(`Login ${response.error}`);
     }
   };
 
