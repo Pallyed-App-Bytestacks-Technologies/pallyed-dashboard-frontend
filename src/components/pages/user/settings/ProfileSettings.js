@@ -16,9 +16,9 @@ const ProfileSettings = () => {
     firstName: loggedInUser.fname,
     lastName: loggedInUser.lname,
     email: loggedInUser.email,
-    phone: 'Phone Number',
+    phone: loggedInUser.gender,
     heading: '',
-    intro: 'A short description of yourself'
+    intro: loggedInUser.description
   });
 
   const handleChange = e => {
@@ -73,10 +73,10 @@ const ProfileSettings = () => {
             </Form.Group>
 
             <Form.Group as={Col} lg={6} controlId="phone">
-              <Form.Label>Phone</Form.Label>
+              <Form.Label>Date of birth</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Phone"
+                type="date"
+                placeholder="D.O.B"
                 value={formData.phone}
                 name="phone"
                 onChange={handleChange}
@@ -85,10 +85,10 @@ const ProfileSettings = () => {
           </Row>
 
           <Form.Group className="mb-3" controlId="heading">
-            <Form.Label>Heading</Form.Label>
+            <Form.Label>Gender</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Heading"
+              placeholder="Gender"
               value={formData.heading}
               name="heading"
               onChange={handleChange}
@@ -96,11 +96,11 @@ const ProfileSettings = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="intro">
-            <Form.Label>Intro</Form.Label>
+            <Form.Label>Description</Form.Label>
             <Form.Control
               as="textarea"
               rows={13}
-              placeholder="Intro"
+              placeholder="a short description about yourself description"
               value={formData.intro}
               name="intro"
               onChange={handleChange}
