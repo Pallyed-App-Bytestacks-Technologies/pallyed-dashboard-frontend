@@ -37,7 +37,20 @@ const LoginForm = ({ hasLabel, layout }) => {
       toast.success(`Logged in as ${formData.email}`);
       localStorage.setItem('access_token', response['access_token']);
       localStorage.setItem('user', JSON.stringify(response['user']));
-      history.push('/');
+      let user = response['user'];
+      if (
+        user.fname == null ||
+        user.lname == null ||
+        user.email == null ||
+        user.gender == null ||
+        user.description == null ||
+        user.dob == null
+      ) {
+        console.log('null data found');
+        history.push('/user/settings');
+      } else {
+        history.push('/');
+      }
     } else {
       toast.error(`Login ${response.error}`);
     }
