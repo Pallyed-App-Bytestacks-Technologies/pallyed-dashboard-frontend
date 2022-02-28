@@ -15,7 +15,7 @@ const Registration = () => {
             as={Link}
             variant="outline-light"
             className="mt-2 px-4"
-            to="/authentication/card/login"
+            to="/auth/login"
           >
             Log In
           </Button>

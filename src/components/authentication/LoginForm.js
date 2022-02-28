@@ -6,7 +6,7 @@ import { Button, Form, Row, Col } from 'react-bootstrap';
 import Divider from 'components/common/Divider';
 import SocialAuthButtons from './SocialAuthButtons';
 
-const LoginForm = ({ hasLabel, layout }) => {
+const LoginForm = ({ hasLabel }) => {
   // State
   const [formData, setFormData] = useState({
     email: '',
@@ -108,10 +108,7 @@ const LoginForm = ({ hasLabel, layout }) => {
         </Col>
 
         <Col xs="auto">
-          <Link
-            className="fs--1 mb-0"
-            to={`/authentication/${layout}/forgot-password`}
-          >
+          <Link className="fs--1 mb-0" to={`/auth/forgot-password`}>
             Forget Password?
           </Link>
         </Col>

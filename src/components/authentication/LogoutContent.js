@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logoutImg from 'assets/img/icons/spot-illustrations/45.png';
 
-const LogoutContent = ({ layout, titleTag: TitleTag }) => {
+const LogoutContent = ({ titleTag: TitleTag }) => {
   return (
     <>
       <img
@@ -24,7 +24,7 @@ const LogoutContent = ({ layout, titleTag: TitleTag }) => {
         color="primary"
         size="sm"
         className="mt-3"
-        to={`/authentication/${layout}/login`}
+        to={`/auth/login`}
       >
         <FontAwesomeIcon
           icon="chevron-left"

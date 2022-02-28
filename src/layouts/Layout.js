@@ -35,7 +35,7 @@ const Layout = () => {
         <Route path="/landing" component={Landing} />
         <Route path="/errors" component={ErrorLayout} />
         <Route path="/authentication/simple" component={AuthSimpleLayout} />
-        <Route path="/authentication/card" component={AuthCardRoutes} />
+        <Route path="/auth" component={AuthCardRoutes} />
         <Route path="/authentication/split" component={AuthSplitRoutes} />
         <Route path="/authentication/wizard" component={WizardAuth} />
         <Route path="/" component={MainLayout} />
