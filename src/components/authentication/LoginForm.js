@@ -46,7 +46,7 @@ const LoginForm = ({ hasLabel, layout }) => {
         user.description == null ||
         user.dob == null
       ) {
-        console.log('null data found');
+        toast.warn('Please complete your Profile');
         history.push('/user/settings');
       } else {
         history.push('/');
