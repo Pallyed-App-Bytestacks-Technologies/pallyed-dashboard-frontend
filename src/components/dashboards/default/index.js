@@ -40,7 +40,7 @@ const Dashboard = () => {
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (!loggedInUser) {
-      history.push('/authentication/card/login');
+      history.push('/auth/login');
     }
   }, []);
   return (
