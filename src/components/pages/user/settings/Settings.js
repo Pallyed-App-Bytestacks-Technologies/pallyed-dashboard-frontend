@@ -12,6 +12,7 @@ import ChangePassword from './ChangePassword';
 //import DangerZone from './DangerZone';
 
 const Settings = () => {
+  let loggedInUser = JSON.parse(localStorage.getItem('user'));
   return (
     <>
       <ProfileBanner>
@@ -31,7 +32,7 @@ const Settings = () => {
           <div className="sticky-sidebar">
             <AccountSettings />
             {/*  <BillingSettings /> */}
-            <ChangePassword />
+            {!loggedInUser.google_id ? <ChangePassword /> : null}
             {/*  <DangerZone /> */}
           </div>
         </Col>
