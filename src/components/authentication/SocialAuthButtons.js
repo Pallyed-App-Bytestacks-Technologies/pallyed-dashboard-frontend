@@ -34,9 +34,22 @@ const SocialAuthButtons = () => {
       toast.success(`Logged in as ${response['user'].email}`);
       localStorage.setItem('access_token', response['access_token']);
       localStorage.setItem('user', JSON.stringify(response['user']));
-      history.push('/');
+      let user = response['user'];
+      if (
+        user.fname == null ||
+        user.lname == null ||
+        user.email == null ||
+        user.gender == null ||
+        user.description == null ||
+        user.dob == null
+      ) {
+        toast.warn('Please complete your Profile');
+        history.push('/user/settings');
+      } else {
+        history.push('/');
+      }
     } else {
-      toast.error('Login Error');
+      toast.error(`Login ${response.error}`);
     }
   };
 
