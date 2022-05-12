@@ -20,7 +20,10 @@ const Login = () => {
         </p>
       }
     >
-      <h3>Account Login</h3>
+      <h3>Account Login</h3> <br />
+      <p className="text-blue">Login with these demo details</p>
+      <p>Email: barry@gmail.com</p>
+      <p>Password: 12345</p> <br />
       <LoginForm layout="card" hasLabel />
     </AuthCardLayout>
   );
