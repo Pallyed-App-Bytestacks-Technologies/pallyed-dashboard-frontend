@@ -36,11 +36,7 @@ const ProfileDropdown = () => {
           <Dropdown.Item as={Link} to="/user/settings">
             Settings
           </Dropdown.Item>
-          <Dropdown.Item
-            as={Link}
-            onClick={logOut}
-            to="/authentication/card/logout"
-          >
+          <Dropdown.Item as={Link} onClick={logOut} to="/auth/logout">
             Logout
           </Dropdown.Item>
         </div>

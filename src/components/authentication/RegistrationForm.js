@@ -39,7 +39,7 @@ const RegistrationForm = ({ hasLabel }) => {
           `Successfully registered as ${response['user'].fname} ${response['user'].lname}`
         );
         console.log(response);
-        history.push('/authentication/card/login');
+        history.push('/auth/login');
       }
     } catch (err) {
       console.log(response);
